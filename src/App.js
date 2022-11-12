@@ -1,39 +1,35 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-// import logo from "./logo.png";
 import Moment from "react-moment";
 import "./style.css";
 
 function App() {
-const [value, onChange] = useState(new Date());
+  const today=new Date();
+const [value, setValue] = useState();
 const [cycle, cycleValue] = useState("28");
-
 const date = value;
-console.log(cycle);
 const cycleLength = parseInt(cycle);
+
 
 return (
 	<>
 	<div className="text-center">
-		<nav className="navbar navbar-light bg-light">
-		<div className="container-fluid text-center">
-			{/* <img
-			// src={logo}
-			alt=""
-			width="250"
-			height="50"
-			className="d-inline-block"
-			/> */}
-
-			<h4>Calculate Next period, Ovulation Day </h4>
-     <a href="https://menstruated.herokuapp.com/home/">RED</a>
+		<nav className="navbar navbar-light pt-3" style={{background:"#783b3b",color:"white"}} >
+		<div className="container-fluid d-flex justify-content-between" style={{background:"#783b3b"}}>
+        <div className="d-flex align-items-center">
+        <img src={"https://www.pngkey.com/png/full/72-724918_vector-drip-clip-art-blood-drop-clipart-png.png"}  style={{hieght:"20px",width:"30px"}} alt="" /> 
+  			<h4>Menstruated: Period Tracker </h4>
+        </div>
+     <a href="https://menstruated.herokuapp.com/home/" style={{background:"#783b3b",textDecoration:"none",color:"white"}}>
+     <h4> Menstruated:Home</h4>
+    </a>
 		</div>
 		</nav>
-		<h4>Calculate Next period, Ovulation Day</h4>
+		<h4 className="mt-5">Predict Next periodand Ovulation Day</h4>
 
-		<label for="cycle">Select your Cycle Length : </label>
+		<label for="cycle">Select Menstruation Cycle Length: </label>
 		<select
 		onChange={(e) => cycleValue(e.target.value)}
 		defaultValue={cycle}
@@ -49,30 +45,27 @@ return (
 		<option value="35">35</option>
 		<option value="36">36</option>
 		<option value="37">37</option>
-		<option value="38">38</option>
-		<option value="39">39</option>
-		<option value="40">40</option>
-		<option value="41">41</option>
-		<option value="42">42</option>
-		<option value="43">43</option>
-		<option value="44">44</option>
-		<option value="45">45</option>
 		</select>
 	</div>
 
 	<p className="text-center">
-		Select Your Last Period Start Date from the Calendar
+		Select Your Last Period Start Date from the Calendar <br/>
+    (Last select date will be loaded )
 	</p>
 
 	<div className="d-flex justify-content-center ">
-		<Calendar onChange={onChange} value={value}
+		<Calendar maxDate={today}  onChange={(e)=>{
+      console.log(e)
+      setValue(e);
+      localStorage.setItem("previousDate", e);
+    }} value={value}
 		className="calendar mt-0" />
 	</div>
 
 	<div className="text-center mt-4 p-2">
 		<div className="row">
-		<div class="d-flex justify-content-center">
-			<div className="col-md-3 m-3 box ">
+		<div class="d-flex flex-column align-items-center justify-content-center">
+			<div className="col-md-3  m-3 box " style={{background:"#c2d5ff"}}>
 			<p>Next Period</p>
 
 			<Moment format="Do MMMM YYYY"
@@ -80,7 +73,7 @@ return (
 				{date}
 			</Moment>
 			</div>
-			<div className="col-md-3 m-3 box ">
+			<div className="col-md-3 m-3 box " style={{background:"#dec2ff"}}>
 			<p> Approximate Ovulation Day</p>
 
 			<Moment
