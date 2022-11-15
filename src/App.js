@@ -19,10 +19,10 @@ return (
 		<nav className="navbar navbar-light pt-3" style={{background:"#783b3b",color:"white"}} >
 		<div className="container-fluid d-flex justify-content-between" style={{background:"#783b3b"}}>
         <div className="d-flex align-items-center">
-        <img src={"https://www.pngkey.com/png/full/72-724918_vector-drip-clip-art-blood-drop-clipart-png.png"}  style={{hieght:"20px",width:"30px"}} alt="" /> 
+        <img src={"https://www.pngkey.com/png/full/72-724918_vector-drip-clip-art-blood-drop-clipart-png.png"}  style={{hieght:"20px",width:"30px",marginRight:"20px"}} alt="" /> 
   			<h4>Menstruated: Period Tracker </h4>
         </div>
-     <a href="https://menstruated.herokuapp.com/home/" style={{background:"#783b3b",textDecoration:"none",color:"white"}}>
+     <a href="https://menstraute.herokuapp.com/home/" style={{background:"#783b3b",textDecoration:"none",color:"white"}}>
      <h4> Menstruated:Home</h4>
     </a>
 		</div>
